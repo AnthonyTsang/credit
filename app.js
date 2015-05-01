@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var expressReactViews = require('express-react-views');
+
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -11,6 +12,7 @@ var users = require('./routes/users');
 
 var app = express();
 var nconf = require('nconf');
+var mongoose = require('mongoose');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,6 +22,8 @@ app.engine('jsx', expressReactViews.createEngine());
 nconf.argv()
     .env()
     .file({ file: 'config.json' });
+
+mongoose.connect(nconf.get('mongodb_conn_string'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
