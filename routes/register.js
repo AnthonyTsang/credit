@@ -1,4 +1,4 @@
-var Account = require('../../entities/account');
+var Account = require('../entities/account');
 
 module.exports = function(req, res, next) {
     var id = req.body.id,
