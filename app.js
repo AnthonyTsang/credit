@@ -10,11 +10,16 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var nconf = require('nconf');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jsx');
 app.engine('jsx', expressReactViews.createEngine());
+
+nconf.argv()
+    .env()
+    .file({ file: 'config.json' });
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
