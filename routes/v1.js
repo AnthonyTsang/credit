@@ -1,10 +1,10 @@
 var router = require('express').Router();
 
-var index    = require('./routes/index');
-var register = require('./routes/user/register');
-var user     = require('./routes/user');
-var userDeposit = require('./routes/user/deposit')
-var userWithdraw = require('./routes/user/withdraw');
+var index    = require('./index');
+var register = require('./register');
+var user     = require('./user');
+var userDeposit = require('./user/deposit')
+var userWithdraw = require('./user/withdraw');
 
 router.get( '/', index);
 router.post('/register', register);

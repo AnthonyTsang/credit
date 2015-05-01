@@ -52,6 +52,10 @@ Account.methods.withdraw = function(amount, errHandler) {
     if(amount <= 0) {
         return errHandler(new Error("Withdraw amount must be positive number."));
     }
+
+    if(this.amount - amount < 0){
+        return errHandler(new Error("Account does not have enoungh credit."));
+    }
     
     this.amount -= amount;
     
