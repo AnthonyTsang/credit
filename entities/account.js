@@ -47,5 +47,17 @@ Account.methods.deposit = function(amount, errHandler) {
     });
 }
 
+Account.methods.withdraw = function(amount, errHandler) {
+    amount = amount | 0;
+    if(amount <= 0) {
+        return errHandler(new Error("Withdraw amount must be positive number."));
+    }
+    
+    this.amount -= amount;
+    
+    return this.save(function(err){
+        return errHandler(err);
+    });
+}
 
 exports.model = mongoose.model('Account', Account);
